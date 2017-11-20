@@ -5,8 +5,8 @@ JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
 KAFKA_HOME=/opt/kafka \
 PATH=$PATH:/opt/kafka/bin
 
-ARG KAFKA_VERSION=0.10.2.0
-ARG KAFKA_DIST=kafka_2.11-0.10.2.0
+ARG KAFKA_VERSION=1.0.0
+ARG KAFKA_DIST=kafka_2.11-1.0.0
 RUN set -x \
     && apt-get update \
     && apt-get install -y openjdk-8-jre-headless wget \
@@ -29,4 +29,5 @@ RUN set -x \
     && mkdir -p $KAFKA_DATA_DIR \
     && chown -R "$KAFKA_USER:$KAFKA_USER"  /opt/$KAFKA_DIST \
     && chown -R "$KAFKA_USER:$KAFKA_USER"  $KAFKA_DATA_DIR
+ADD http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar $KAFA_HOME/jmx_prometheus_javaagent.jar
   
