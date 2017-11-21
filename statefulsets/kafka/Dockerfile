@@ -21,6 +21,8 @@ RUN set -x \
     
 COPY log4j.properties /opt/$KAFKA_DIST/config/
 
+ADD http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar /opt/$KAFKA_DIST/jmx_prometheus_javaagent.jar
+
 RUN set -x \
     && ln -s /opt/$KAFKA_DIST $KAFKA_HOME \
     && useradd $KAFKA_USER \
@@ -29,5 +31,4 @@ RUN set -x \
     && mkdir -p $KAFKA_DATA_DIR \
     && chown -R "$KAFKA_USER:$KAFKA_USER"  /opt/$KAFKA_DIST \
     && chown -R "$KAFKA_USER:$KAFKA_USER"  $KAFKA_DATA_DIR
-ADD http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar $KAFA_HOME/jmx_prometheus_javaagent.jar
   
