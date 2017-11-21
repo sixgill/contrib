@@ -20,7 +20,7 @@ RUN set -x \
     && rm -r "$GNUPGHOME" "$KAFKA_DIST.tgz" "$KAFKA_DIST.tgz.asc"
     
 COPY log4j.properties /opt/$KAFKA_DIST/config/
-
+COPY kafka-prometheus.yaml /opt/$KAFKA_DIST/
 ADD http://central.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.10/jmx_prometheus_javaagent-0.10.jar /opt/$KAFKA_DIST/jmx_prometheus_javaagent.jar
 
 RUN set -x \
