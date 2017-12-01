@@ -85,3 +85,11 @@ rules:
     name: kafka_$1_$2_$3_$6
     labels:
       "$4": "$5"
+  - pattern : kafka.network<type=RequestMetrics, name=TotalTimeMs, request=(.+)><>Mean
+    name: kafka_network_requestmetrics_totaltimems_mean
+    labels:
+      request: "$1"
+  - pattern : kafka.network<type=RequestMetrics, name=TotalTimeMs, request=(.+)><>999thPercentile
+    name: kafka_network_requestmetrics_totaltimems_999thpercentile
+    labels:
+      request: "$1"
